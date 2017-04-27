@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scriptApproval plugin="script-security@1.22">
+  <approvedScriptHashes>
+  </approvedScriptHashes>
+  <approvedSignatures>
+	<string>new groovy.json.JsonSlurperClassic</string>
+    <string>method groovy.json.JsonSlurperClassic parseText java.lang.String</string>
+    <string>staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods sprintf java.lang.Object java.lang.String java.lang.Object</string>
+	<string>field java.util.ArrayList size</string>
+    <string>method groovy.lang.GString plus java.lang.String</string>
+	<string>method groovy.lang.GroovyObject getProperty java.lang.String</string>
+    <string>method groovy.lang.GroovyObject invokeMethod java.lang.String java.lang.Object</string>
+  </approvedSignatures>
+  <aclApprovedSignatures/>
+  <approvedClasspathEntries/>
+  <pendingScripts/>
+  <pendingSignatures/>
+  <pendingClasspathEntries/>
+</scriptApproval>
