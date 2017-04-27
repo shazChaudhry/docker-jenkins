@@ -1,8 +1,8 @@
 This image extends the latest version of jenkinsci/jenkins. Additionally, it comes with the latest version of Docker engine and the following plugins pre-installed:
-- purge-job-history
-- global-build-stats
-- keycloak
-- blueocean
+- [keycloak](https://wiki.jenkins-ci.org/display/JENKINS/keycloak-plugin)
+- [blueocean](https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin)
+- [global-build-stats](https://wiki.jenkins-ci.org/display/JENKINS/Global+Build+Stats+Plugin)
+- [purge-job-history](https://wiki.jenkins-ci.org/display/JENKINS/Purge+Job+History+Plugin)
 
 Use the following command to build the image:
 ```
