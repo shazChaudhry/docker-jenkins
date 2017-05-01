@@ -6,6 +6,7 @@ COPY config/executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groo
 
 # Install plugins
 RUN /usr/local/bin/install-plugins.sh \
+    junit \
     purge-job-history \
     global-build-stats \
     keycloak \
