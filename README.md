@@ -21,3 +21,6 @@ docker run -d --rm \
 -v /var/run/docker.sock:/var/run/docker.sock \
 shazchaudhry/docker-jenkins
 ```
+
+Test
+- In your favorite web browser, navigate to `http://<IP_ADDRESS>:8080` and follow the getting started wizard to setup Jenkins
