@@ -14,9 +14,10 @@ services:
 script:
   - docker build --rm --no-cache --tag quay.io/shazchaudhry/docker-jenkins .
   - docker images
-  - docker inspect quay.io/shazchaudhry/docker-jenkins
   - docker run -d --rm --name jenkins --publish 8080:8080 --volume jenkins_home:/var/jenkins_home --volume /var/run/docker.sock:/var/run/docker.sock quay.io/shazchaudhry/docker-jenkins
+  - sleep 60 #wait for jenkins to come up
   - docker ps -a
+  - docker inspect quay.io/shazchaudhry/docker-jenkins
   - docker stop jenkins
   - docker login -u="shazchaudhry" -p=${QUAY_PASSWORD} quay.io
   - docker push quay.io/shazchaudhry/docker-jenkins
