@@ -1,3 +1,6 @@
+[![Build Status on Travis](https://travis-ci.org/shazChaudhry/docker-jenkins.svg?branch=master "CI build on Travis")](https://travis-ci.org/shazChaudhry/docker-jenkins)
+[![Docker Repository on Quay](https://quay.io/repository/shazchaudhry/docker-jenkins/status "Docker Repository on Quay")](https://quay.io/repository/shazchaudhry/docker-jenkins)
+
 This image extends the latest version of [Jenkins Continuous Integration and Delivery server](https://hub.docker.com/r/jenkinsci/jenkins/). Additionally, it comes with the latest version of Docker engine and the following plugins pre-installed:
 - [blueocean](https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin)
 - [global-build-stats](https://wiki.jenkins-ci.org/display/JENKINS/Global+Build+Stats+Plugin)
