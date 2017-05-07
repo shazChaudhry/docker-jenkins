@@ -5,19 +5,25 @@ before_install:
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
   - docker version
   # Install latest version of docker-compose
-  - sudo apt-get install -y python-pip && pip install --upgrade pip
-  - sudo pip install docker-compose
-  - docker-compose version
+  #- sudo apt-get update -qq
+  #- sudo apt-get install -qq python-pip && pip install --upgrade pip
+  #- sudo pip install docker-compose
+  #- docker-compose version
+
 services:
   - docker
 
-script:
+before_script:
   - docker build --rm --no-cache --tag quay.io/shazchaudhry/docker-jenkins .
-  - docker images
+  - docker image ls
+
+script:
   - docker run -d --rm --name jenkins --publish 8080:8080 --volume jenkins_home:/var/jenkins_home --volume /var/run/docker.sock:/var/run/docker.sock quay.io/shazchaudhry/docker-jenkins
   - sleep 60 #wait for jenkins to come up
   - docker ps -a
-  - docker inspect quay.io/shazchaudhry/docker-jenkins
-  - docker stop jenkins
+  - docker container inspect jenkins
+  - docker volume inspect jenkins_home
+
+after_script:
   - docker login -u="shazchaudhry" -p=${QUAY_PASSWORD} quay.io
-  - docker push quay.io/shazchaudhry/docker-jenkins
+  - docker push quay.io/shazchaudhry/docker-jenkins:latest
