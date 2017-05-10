@@ -10,7 +10,8 @@ RUN /usr/local/bin/install-plugins.sh \
     global-build-stats \
     junit \
     keycloak \
-    purge-job-history
+    purge-job-history \
+    role-strategy
 
 USER root
 
