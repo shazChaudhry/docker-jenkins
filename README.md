@@ -13,7 +13,7 @@ Use the following command to build the image from source:
 ```
 docker build \
 --rm --no-cache \
---tag quay.io/shazchaudhry/docker-jenkins .
+--tag shazchaudhry/docker-jenkins .
 ```
 
 Use the following command to run this image from docker hub:
@@ -23,7 +23,7 @@ docker run -d --rm \
 -p 8080:8080 \
 -v jenkins_home:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
-quay.io/shazchaudhry/docker-jenkins
+shazchaudhry/docker-jenkins
 ```
 
 Test
