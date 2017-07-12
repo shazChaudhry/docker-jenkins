@@ -11,20 +11,21 @@ This image extends the latest version of [Jenkins Continuous Integration and Del
 
 Use the following command to build the image from source:
 ```
-docker build \
+docker image build \
 --rm --no-cache \
---tag shazchaudhry/docker-jenkins .
+--tag quay.io/shazchaudhry/docker-jenkins .
 ```
 
 Use the following command to run this image from docker hub:
 ```
-docker run -d --rm \
+docker container run -d --rm \
 --name jenkins \
 -p 8080:8080 \
 -v jenkins_home:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
-shazchaudhry/docker-jenkins
+quay.io/shazchaudhry/docker-jenkins
 ```
 
 Test
-- In your favorite web browser, navigate to `http://<IP_ADDRESS>:8080` and follow the getting started wizard to setup Jenkins
+- In your favorite web browser, navigate to `http://<host_IP>:8080` and follow the getting started wizard to setup Jenkins
+- Create a pipeline using blueocean editor
