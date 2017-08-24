@@ -18,10 +18,12 @@ before_script:
   - docker image ls
 
 script:
-  - docker run -d --rm --name jenkins --publish 8080:8080 --volume jenkins_home:/var/jenkins_home --volume /var/run/docker.sock:/var/run/docker.sock quay.io/shazchaudhry/docker-jenkins
+  - echo "admin" | docker secret create jenkins-user -
+  - echo "admin" | docker secret create jenkins-pass -
+  - docker stack deploy -c docker-compose.yml jenkins
   - sleep 60 #wait for jenkins to come up
   - docker ps -a
-  - docker container inspect jenkins
+  - docker stack services jenkins
   - docker volume inspect jenkins_home
 
 after_script:

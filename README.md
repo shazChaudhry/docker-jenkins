@@ -12,12 +12,12 @@ docker image build \
 --rm --no-cache \
 --tag quay.io/shazchaudhry/docker-jenkins .
 ```
-Use the following commands to run the image: <br/>
-`echo "admin" | docker secret create jenkins-user -`
-<br/>
-`echo "admin" | docker secret create jenkins-pass -`
-<br/>
-`docker stack deploy -c docker-compose.yml jenkins`
+Use the following commands to run the image:
+```
+echo "admin" | docker secret create jenkins-user -
+echo "admin" | docker secret create jenkins-pass -
+docker stack deploy -c docker-compose.yml jenkins
+```
 
 Test
 - In your favorite web browser, navigate to `http://node1:8080` and follow the getting started wizard to setup Jenkins

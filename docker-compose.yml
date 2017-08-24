@@ -9,10 +9,10 @@ services:
 #      - JENKINS_OPTS='--prefix=/jenkins'
     ports:
       - 8080:8080
-      - 50000:50000
+#      - 50000:50000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-#      - jenkins_home:/var/jenkins_home
+      - jenkins_home:/var/jenkins_home
     secrets:
       - jenkins-user
       - jenkins-pass
@@ -23,5 +23,5 @@ secrets:
   jenkins-pass:
     external: true
 
-#volumes:
-#  jenkins_home:
+volumes:
+  jenkins_home:
