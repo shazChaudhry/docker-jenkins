@@ -8,8 +8,7 @@ This image extends the latest version of [Jenkins Continuous Integration and Del
 
 Use the following command to build the image from source:
 ```
-docker image build \
---rm --no-cache \
+docker image build --no-cache \
 --tag quay.io/shazchaudhry/docker-jenkins .
 ```
 Use the following commands to run the image:
@@ -20,5 +19,4 @@ docker stack deploy -c docker-compose.yml jenkins
 ```
 
 Test
-- In your favorite web browser, navigate to `http://node1:8080` and follow the getting started wizard to setup Jenkins
-- Create a pipeline using blueocean editor
+- In your favorite web browser, navigate to `http://node1/jenkins` and follow the getting started wizard to setup Jenkins
