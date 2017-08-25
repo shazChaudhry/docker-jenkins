@@ -19,4 +19,4 @@ docker stack deploy -c docker-compose.yml jenkins
 ```
 
 Test
-- In your favorite web browser, navigate to `http://node1/jenkins` and follow the getting started wizard to setup Jenkins
+- Assuming the provided vagrantfile is being used, in your favorite web browser, navigate to `http://node1/jenkins` and follow the getting started wizard to setup Jenkins
