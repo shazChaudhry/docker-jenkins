@@ -34,6 +34,6 @@ docker stack services jenkins
 ```
 
 ### Test
-- If provided vagrantfile is being used, in your favorite web browser, navigate to `http://node1/jenkins`
+- If provided vagrantfile is being used, in your favorite web browser, navigate to [http://node1/jenkins](http://node1/jenkins)
   - username = `admin`
   - password = `admin`
