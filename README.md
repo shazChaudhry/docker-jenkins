@@ -6,6 +6,20 @@ This image extends the latest version of [Jenkins Continuous Integration and Del
 - [keycloak](https://wiki.jenkins-ci.org/display/JENKINS/keycloak-plugin "Keycloak Authentication")
 - [role-strategy](https://plugins.jenkins.io/role-strategy "Role-based Authorization Strategy")
 
+### Create local environment
+- Clone this repository: `git clone https://github.com/shazChaudhry/docker-jenkins.git`
+- Change directory: `cd docker-jenkins`
+- Run provided vagrantfile: `vagrant up`
+- ssh to the vagrant box: `vagrant ssh`
+- Change to synched folder: `cd /vagrant`
+
+### play-with-docker environment
+- Navigate to http://play-with-docker.com/ and create docker swarm environment
+- Clone this repository: `git clone https://github.com/shazChaudhry/docker-jenkins.git`
+- Change directory: `cd docker-jenkins`
+
+
+### Instructions to run jenkins stack
 Use the following command to build the image from source:
 ```
 docker image build --no-cache \
@@ -16,7 +30,10 @@ Use the following commands to run the image:
 echo "admin" | docker secret create jenkins-user -
 echo "admin" | docker secret create jenkins-pass -
 docker stack deploy -c docker-compose.yml jenkins
+docker stack services jenkins
 ```
 
-Test
-- Assuming the provided vagrantfile is being used, in your favorite web browser, navigate to `http://node1/jenkins` and follow the getting started wizard to setup Jenkins
+### Test
+- If provided vagrantfile is being used, in your favorite web browser, navigate to `http://node1/jenkins`
+  - username = `admin`
+  - password = `admin`
