@@ -49,6 +49,7 @@ RUN /usr/local/bin/install-plugins.sh \
   github \
   github-api \
   github-branch-source \
+  gitlab-plugin \
   git-server \
   global-build-stats \
   gradle \
