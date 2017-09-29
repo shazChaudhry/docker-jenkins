@@ -6,6 +6,7 @@ This image extends the latest version of [Jenkins Continuous Integration and Del
 - [keycloak](https://wiki.jenkins-ci.org/display/JENKINS/keycloak-plugin "Keycloak Authentication")
 - [role-strategy](https://plugins.jenkins.io/role-strategy "Role-based Authorization Strategy")
 
+
 ### Create local environment
 - Clone this repository: `git clone https://github.com/shazChaudhry/docker-jenkins.git`
 - Change directory: `cd docker-jenkins`
