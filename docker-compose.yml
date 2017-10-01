@@ -25,8 +25,6 @@ services:
       environment:
           - LISTENER_ADDRESS=swarm-listener
           - MODE=swarm
-      deploy:
-          replicas: 1
 
   jenkins:
       image: quay.io/shazchaudhry/docker-jenkins
