@@ -2,9 +2,10 @@ FROM jenkins/jenkins
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
-# https://blog.scottlowe.org/2017/11/08/how-tag-docker-images-git-commit-information/?mkt_tok=eyJpIjoiWW1ObE4yVTFPVEJsTVRNMyIsInQiOiJPVkNSdVllMzdmemhaKzNKVFFibk9PS080anNzMklseGRCVCtQS05oSHRmb2FLTHA0d3NBaXFtbjJ2ckdNV29IakExbEFzdiszQ1U4a2g3UkVuU1VOcUlcL3dTZVRHYUpvamFHZkJEZW1UN0twU0ZKOHAzVUxsSjl0TjNWVkRMTFQifQ%3D%3D
 ARG GIT_COMMIT=unspecified
 LABEL git_commit=$GIT_COMMIT
+# Run this command to find git commit:-
+#docker inspect quay.io/shazchaudhry/docker-jenkins | jq '.[].ContainerConfig.Labels'
 
 # Configure Jenkins
 COPY config/*.xml $JENKINS_HOME/
