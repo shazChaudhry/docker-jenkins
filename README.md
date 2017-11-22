@@ -24,7 +24,7 @@ This image extends the latest version of [Jenkins Continuous Integration and Del
 Use the following command to build the image from source:
 ```
 docker image build --no-cache \
---tag quay.io/shazchaudhry/docker-jenkins .
+--tag quay.io/shazchaudhry/docker-jenkins --build-arg GIT_COMMIT=$(git log -1 --format=%H) .
 ```
 Use the following commands to run the image:
 ```

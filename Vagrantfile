@@ -1,11 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-$docker_swarm_init = <<SCRIPT
-echo "============== Initializing swarm mode ====================="
-docker swarm init --advertise-addr 192.168.99.101 --listen-addr 192.168.99.101:2377
-SCRIPT
-
 Vagrant.configure("2") do |config|
 	config.vm.box = "ubuntu/xenial64"
 	config.hostmanager.enabled = true
@@ -21,7 +16,7 @@ Vagrant.configure("2") do |config|
 			v.customize ["modifyvm", :id, "--memory", 4000]
 			v.customize ["modifyvm", :id, "--name", "node1"]
 		end
-		node1.vm.provision :shell, inline: $docker_swarm_init
+		node1.vm.provision :shell,
+      inline: "docker swarm init --advertise-addr 192.168.99.101 --listen-addr 192.168.99.101:2377"
 	end
-
 end
