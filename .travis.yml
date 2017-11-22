@@ -18,7 +18,7 @@ script:
 
 after_script:
   - docker stack services jenkins
-  - docker volume inspect jenkins_home
+  - docker volume inspect jenkins_jenkins_home
 
 after_success:
   - docker login -u="shazchaudhry" -p=${QUAY_PASSWORD} quay.io
