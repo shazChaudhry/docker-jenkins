@@ -3,7 +3,7 @@ version: "3.4"
 services:
 
   proxy:
-    image: vfarcic/docker-flow-proxy:17.11.11-56
+    image: vfarcic/docker-flow-proxy
     ports:
       - "80:80"
       - "443:443"
