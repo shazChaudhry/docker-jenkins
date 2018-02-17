@@ -30,6 +30,7 @@ services:
 
   jenkins:
     image: quay.io/shazchaudhry/docker-jenkins:latest
+    user: root
     environment:
       - JENKINS_OPTS='--prefix=/jenkins'
     networks:
