@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 		node1.vm.network :private_network, ip: "192.168.99.101"
 		node1.vm.provider :virtualbox do |v|
 			v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-			v.customize ["modifyvm", :id, "--memory", 4000]
+			v.customize ["modifyvm", :id, "--memory", 8000]
 			v.customize ["modifyvm", :id, "--name", "node1"]
 		end
 		node1.vm.provision :shell,
