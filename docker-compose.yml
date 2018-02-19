@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3.5"
 
 services:
 
@@ -48,6 +48,24 @@ services:
         - com.df.distribute=true
         - com.df.servicePath=/jenkins
 
+  jenkins_slave:
+    image: vfarcic/jenkins-swarm-agent
+    environment:
+      - USER_NAME_SECRET=/run/secrets/${JENKINS_USER_SECRET:-jenkins-user}
+      - PASSWORD_SECRET=/run/secrets/${JENKINS_PASS_SECRET:-jenkins-pass}
+      - COMMAND_OPTIONS=-master http://jenkins:8080/jenkins -labels docker -executors 5
+    networks:
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_slave_workspace:/workspace
+    secrets:
+      - jenkins-user
+      - source: jenkins-pass
+        mode: 0400
+    deploy:
+      mode: global
+
 secrets:
   jenkins-pass:
     external: true
@@ -56,6 +74,7 @@ secrets:
 
 volumes:
   jenkins_home:
+  jenkins_slave_workspace:
 
 networks:
   proxy:
