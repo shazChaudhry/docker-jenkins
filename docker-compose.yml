@@ -12,8 +12,6 @@ services:
     environment:
       - LISTENER_ADDRESS=swarm-listener
       - MODE=swarm
-    deploy:
-      replicas: 1
 
   swarm-listener:
     image: vfarcic/docker-flow-swarm-listener
@@ -50,10 +48,14 @@ services:
 
   jenkins_slave:
     image: vfarcic/jenkins-swarm-agent
+    # Open this port if slave is running in a separate swarm cluster
+    # ports:
+    #   - "50000:50000"
     environment:
       - USER_NAME_SECRET=/run/secrets/${JENKINS_USER_SECRET:-jenkins-user}
       - PASSWORD_SECRET=/run/secrets/${JENKINS_PASS_SECRET:-jenkins-pass}
-      - COMMAND_OPTIONS=-master http://jenkins:8080/jenkins -labels docker -executors 5
+      # See slave options at: https://wiki.jenkins.io/display/JENKINS/Swarm+Plugin
+      - COMMAND_OPTIONS=-master http://jenkins:8080/jenkins/ -description slave -mode exclusive -name slave -labels slave -executors 1
     networks:
       - proxy
     volumes:
@@ -64,7 +66,8 @@ services:
       - source: jenkins-pass
         mode: 0400
     deploy:
-      mode: global
+      placement:
+        constraints: [node.role == manager]
 
 secrets:
   jenkins-pass:
