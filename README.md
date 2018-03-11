@@ -38,7 +38,6 @@ Use the following command to build the image from source:
 ```
 
 ### Test
-- If provided vagrantfile is being used, in your favorite web browser, navigate to [http://192.168.99.101/jenkins](http://192.168.99.101/jenkins)
+- If provided vagrantfile is being used, in your favorite web browser, navigate to [http://node1/jenkins](http://node1/jenkins)
   - username = `admin`
   - password = `admin`
-  

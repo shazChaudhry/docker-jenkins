@@ -1,4 +1,4 @@
-FROM jenkinsci/blueocean
+FROM jenkinsci/blueocean:latest
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
@@ -12,7 +12,7 @@ COPY config/*.xml $JENKINS_HOME/
 COPY config/*.groovy /usr/share/jenkins/ref/init.groovy.d/
 
 # Once jenkins is running and configured, run the following command to find the list of plugins installed:
-##  curl -s -k "http://admin:admin@localhost:8080/pluginManager/api/json?depth=1" | jq -r '.plugins[].shortName' | tee plugins.txt
+##  curl -s -k "http://admin:admin@node1/jenkins/pluginManager/api/json?depth=1" | jq -r '.plugins[].shortName' | tee plugins.txt
 RUN /usr/local/bin/install-plugins.sh \
   ace-editor \
   ant \
@@ -114,5 +114,3 @@ RUN /usr/local/bin/install-plugins.sh \
   workflow-step-api \
   workflow-support \
   ws-cleanup
-
-VOLUME [$JENKINS_HOME, "/var/run/docker.sock"]
