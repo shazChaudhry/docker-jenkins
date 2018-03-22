@@ -48,14 +48,11 @@ services:
 
   jenkins_slave:
     image: vfarcic/jenkins-swarm-agent
-    # Open this port if slave is running in a separate swarm cluster
-    # ports:
-    #   - "50000:50000"
     environment:
       - USER_NAME_SECRET=/run/secrets/${JENKINS_USER_SECRET:-jenkins-user}
       - PASSWORD_SECRET=/run/secrets/${JENKINS_PASS_SECRET:-jenkins-pass}
       # See slave options at: https://wiki.jenkins.io/display/JENKINS/Swarm+Plugin
-      - COMMAND_OPTIONS=-master http://jenkins:8080/jenkins/ -description slave -mode exclusive -name slave -labels slave -executors 1
+      - COMMAND_OPTIONS=-master http://jenkins:8080/jenkins/ -description slave -mode exclusive -name slave -labels slave -executors 2
     networks:
       - proxy
     volumes:
@@ -66,8 +63,7 @@ services:
       - source: jenkins-pass
         mode: 0400
     deploy:
-      placement:
-        constraints: [node.role == manager]
+      mode: global
 
 secrets:
   jenkins-pass:
@@ -77,6 +73,11 @@ secrets:
 
 volumes:
   jenkins_home:
+    # See 'REX-Ray Docker volume plug-ins' documentaion; volume available across entire docker swarm cluster
+    # https://rexray.readthedocs.io/en/v0.9.0/user-guide/docker-plugins/#elastic-block-service
+    # driver: rexray/ebs
+    # driver_opts:
+    #   size: 5
   jenkins_slave_workspace:
 
 networks:
