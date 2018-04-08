@@ -3,7 +3,7 @@ version: "3.6"
 services:
 
   proxy:
-    image: vfarcic/docker-flow-proxy
+    image: dockerflow/docker-flow-proxy
     ports:
       - "80:80"
       - "443:443"
@@ -14,7 +14,7 @@ services:
       - MODE=swarm
 
   swarm-listener:
-    image: vfarcic/docker-flow-swarm-listener
+    image: dockerflow/docker-flow-swarm-listener
     networks:
       - proxy
     volumes:
