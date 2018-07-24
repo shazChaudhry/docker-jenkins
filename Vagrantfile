@@ -28,15 +28,6 @@ Vagrant.configure("2") do |config|
 			v.customize ["modifyvm", :id, "--name", "node1"]
 		end
 		node1.vm.provision :shell, inline: $docker_swarm_init
-		node1.vm.provision "docker" do |d|
-			# d.run "visualizer",
-			# 	image: "dockersamples/visualizer",
-			# 	args: "-it -p 9999:8080 -v /var/run/docker.sock:/var/run/docker.sock"
-      d.run "Portainer",
-				image: "portainer/portainer",
-        cmd: "-H unix:///var/run/docker.sock --no-auth",
-				args: "-it -p 9090:9000 -v /var/run/docker.sock:/var/run/docker.sock"
-		end
 	end
 
 	config.vm.define "node2" do |node2|
