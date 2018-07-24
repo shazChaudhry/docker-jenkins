@@ -27,7 +27,7 @@ services:
         constraints: [node.role == manager]
 
   jenkins:
-    image: quay.io/shazchaudhry/docker-jenkins:latest
+    image: shazchaudhry/docker-jenkins:latest
     user: root
     environment:
       - JENKINS_OPTS='--prefix=/jenkins'

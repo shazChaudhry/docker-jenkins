@@ -22,4 +22,4 @@ after_script:
 
 # after_success:
 #   - docker login -u="shazchaudhry" -p=${QUAY_PASSWORD} quay.io
-#   - docker push quay.io/shazchaudhry/docker-jenkins:latest
+#   - docker push shazChaudhry/docker-jenkins:latest
