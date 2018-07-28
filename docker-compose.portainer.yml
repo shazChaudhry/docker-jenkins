@@ -1,8 +1,8 @@
-version: '3.7'
+version: '3.6'
 
 services:
   agent:
-    image: portainer/agent
+    image: portainer/agent:latest
     environment:
       # REQUIRED: Should be equal to the service name prefixed by "tasks." when
       # deployed inside an overlay network
@@ -15,9 +15,11 @@ services:
       - agent_network
     deploy:
       mode: global
+      placement:
+        constraints: [node.platform.os == linux]
 
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer:latest
     command: ["-H", "tcp://tasks.agent:9001", "--tlsskipverify", "--no-auth"]
     ports:
       - "9000:9000"
@@ -34,6 +36,7 @@ services:
 networks:
   agent_network:
     driver: overlay
+    attachable: true
 
 volumes:
   portainer_data:
