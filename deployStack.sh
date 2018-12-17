@@ -3,7 +3,7 @@
 docker image build --no-cache \
 --tag shazchaudhry/docker-jenkins:latest --build-arg GIT_COMMIT=$(git log -1 --format=%H) .
 # Run this command to find git commit:-
-#docker inspect quay.io/shazchaudhry/docker-jenkins | jq '.[].ContainerConfig.Labels'
+## docker inspect shazchaudhry/docker-jenkins:latest | jq '.[].ContainerConfig.Labels'
 
 docker image ls
 

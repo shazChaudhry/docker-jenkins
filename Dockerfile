@@ -4,8 +4,11 @@ ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
 ARG GIT_COMMIT=unspecified
 LABEL git_commit=$GIT_COMMIT
-# Run this command to find git commit:-
-#docker inspect quay.io/shazchaudhry/docker-jenkins | jq '.[].ContainerConfig.Labels'
+
+# Run this command to build the image locally:
+## docker image build --no-cache --tag shazchaudhry/docker-jenkins:latest --build-arg GIT_COMMIT=$(git log -1 --format=%H) .
+# Once the image has been build using the above command then run this command below to find git commit:
+## docker inspect shazchaudhry/docker-jenkins:latest | jq '.[].ContainerConfig.Labels'
 
 # Configure Jenkins
 COPY config/*.xml $JENKINS_HOME/
