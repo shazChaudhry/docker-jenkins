@@ -24,10 +24,11 @@ Vagrant.configure("2") do |config|
 		node1.vm.network :private_network, ip: "192.168.99.101"
 		node1.vm.provider :virtualbox do |v|
 			v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-			v.customize ["modifyvm", :id, "--memory", 6000]
+			v.customize ["modifyvm", :id, "--memory", 5000]
 			v.customize ["modifyvm", :id, "--name", "node1"]
 		end
 		node1.vm.provision :shell, inline: $docker_swarm_init
+		node1.vm.provision :shell, inline: "apt install -y jq"
 	end
 
 	config.vm.define "node2" do |node2|
@@ -35,7 +36,7 @@ Vagrant.configure("2") do |config|
 		node2.vm.network :private_network, ip: "192.168.99.102"
 		node2.vm.provider :virtualbox do |v|
 			v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-			v.customize ["modifyvm", :id, "--memory", 4000]
+			v.customize ["modifyvm", :id, "--memory", 3000]
 			v.customize ["modifyvm", :id, "--name", "node2"]
 		end
 		node2.vm.provision :shell, inline: $docker_swarm_join_worker
